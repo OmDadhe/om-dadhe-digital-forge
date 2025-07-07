@@ -54,35 +54,23 @@ const Contact = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               {contactInfo.map((contact) => (
-                <div key={contact.type} className="flex items-center justify-between p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors glow-effect">
-                  <div>
-                    <div className="font-medium text-white">{contact.type}</div>
-                    <div className="text-sm text-white/70">{contact.value}</div>
-                  </div>
-                  {contact.action && (
-                    <Button variant="ghost" size="sm" asChild className="text-white hover:text-accent">
-                      <a href={contact.action} target="_blank" rel="noopener noreferrer">
-                        <ArrowRight className="h-4 w-4" />
-                      </a>
-                    </Button>
+                <div key={contact.type} className="p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors glow-effect">
+                  {contact.action ? (
+                    <a href={contact.action} target="_blank" rel="noopener noreferrer" className="block">
+                      <div className="font-medium text-white">{contact.type}</div>
+                      <div className="text-sm text-white/70">{contact.value}</div>
+                    </a>
+                  ) : (
+                    <div>
+                      <div className="font-medium text-white">{contact.type}</div>
+                      <div className="text-sm text-white/70">{contact.value}</div>
+                    </div>
                   )}
                 </div>
               ))}
             </CardContent>
           </Card>
 
-          {/* Get In Touch Button */}
-          <div className="text-center mt-8">
-            <Button 
-              size="lg" 
-              className="glow-effect"
-              asChild
-            >
-              <a href="mailto:omdadhe07@gmail.com">
-                Get In Touch
-              </a>
-            </Button>
-          </div>
         </div>
       </div>
     </section>

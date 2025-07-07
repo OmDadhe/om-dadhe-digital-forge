@@ -181,7 +181,7 @@ git push origin feature/new-endpoint`
                         onMouseEnter={() => setHoveredSkill(skill)}
                         onMouseLeave={() => setHoveredSkill(null)}
                       >
-                        <span className="font-medium text-white">{skill}</span>
+                        <span className="font-medium text-white text-sm sm:text-base break-words">{skill}</span>
                       </div>
                       
                       {hoveredSkill === skill && codeSnippets[skill as keyof typeof codeSnippets] && (

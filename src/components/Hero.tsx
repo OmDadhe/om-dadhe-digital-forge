@@ -5,8 +5,8 @@ const Hero = () => {
         <div className="max-w-4xl mx-auto space-y-8">
           {/* Main Headline */}
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              <span className="text-white name-glow">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight pt-16 md:pt-0">
+              <span className="text-white">
                 Om Dadhe
               </span>
             </h1>
