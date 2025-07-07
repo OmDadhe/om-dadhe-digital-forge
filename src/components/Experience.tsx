@@ -63,13 +63,13 @@ const Experience = () => {
   };
 
   return (
-    <section id="experience" className="py-20 px-4">
+    <section id="experience" className="py-20 px-4 animate-scroll-fade">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Professional Journey
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Building scalable solutions and gaining expertise in modern backend technologies
           </p>
         </div>
@@ -77,30 +77,30 @@ const Experience = () => {
         {/* Experience Timeline */}
         <div className="space-y-8 mb-16">
           {experiences.map((exp, index) => (
-            <Card key={exp.company} className="bg-card border-border">
+            <Card key={exp.company} className="bg-card border-border card-hover">
               <CardHeader>
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
-                    <CardTitle className="text-xl text-primary">{exp.role}</CardTitle>
-                    <CardDescription className="text-lg font-medium text-foreground">
+                    <CardTitle className="text-xl text-white">{exp.role}</CardTitle>
+                    <CardDescription className="text-lg font-medium text-white/80">
                       {exp.company}
                     </CardDescription>
                   </div>
                   <div className="flex flex-col items-start md:items-end gap-2">
-                    <Badge variant="secondary">{exp.period}</Badge>
-                    <Badge variant="outline">{exp.type}</Badge>
+                    <Badge variant="secondary" className="text-white border-white/30">{exp.period}</Badge>
+                    <Badge variant="outline" className="text-white border-white/30">{exp.type}</Badge>
                   </div>
                 </div>
-                <p className="text-muted-foreground mt-2">{exp.description}</p>
+                <p className="text-white/70 mt-2">{exp.description}</p>
               </CardHeader>
               
               <CardContent className="space-y-6">
                 {/* Technologies */}
                 <div>
-                  <h4 className="font-semibold text-primary mb-3">Technologies Used:</h4>
+                  <h4 className="font-semibold text-white mb-3">Technologies Used:</h4>
                   <div className="flex flex-wrap gap-2">
                     {exp.technologies.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
+                      <Badge key={tech} variant="secondary" className="text-xs text-white border-white/30">
                         {tech}
                       </Badge>
                     ))}
@@ -109,10 +109,10 @@ const Experience = () => {
 
                 {/* Key Achievements */}
                 <div>
-                  <h4 className="font-semibold text-primary mb-3">Key Achievements:</h4>
+                  <h4 className="font-semibold text-white mb-3">Key Achievements:</h4>
                   <ul className="space-y-2">
                     {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
+                      <li key={i} className="flex items-start gap-3 text-sm text-white/70">
                         <span className="text-accent mt-1 text-base">•</span>
                         <span>{achievement}</span>
                       </li>
@@ -124,8 +124,8 @@ const Experience = () => {
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
                   {Object.entries(exp.impact).map(([key, value]) => (
                     <div key={key} className="text-center">
-                      <div className="font-bold text-primary text-lg">{value}</div>
-                      <div className="text-xs text-muted-foreground capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
+                      <div className="font-bold text-white text-lg">{value}</div>
+                      <div className="text-xs text-white/60 capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
                     </div>
                   ))}
                 </div>
@@ -135,28 +135,28 @@ const Experience = () => {
         </div>
 
         {/* Education */}
-        <Card className="bg-card border-border">
+        <Card className="bg-card border-border card-hover">
           <CardHeader>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <CardTitle className="text-xl text-primary">Education</CardTitle>
-                <CardDescription className="text-lg font-medium text-foreground">
+                <CardTitle className="text-xl text-white">Education</CardTitle>
+                <CardDescription className="text-lg font-medium text-white/80">
                   {education.degree}
                 </CardDescription>
               </div>
               <div className="flex flex-col items-start md:items-end gap-2">
-                <Badge variant="secondary">{education.period}</Badge>
-                <Badge variant="outline">GPA: {education.gpa}</Badge>
+                <Badge variant="secondary" className="text-white border-white/30">{education.period}</Badge>
+                <Badge variant="outline" className="text-white border-white/30">GPA: {education.gpa}</Badge>
               </div>
             </div>
           </CardHeader>
           
           <CardContent>
             <div>
-              <h4 className="font-semibold text-primary mb-3">Relevant Coursework:</h4>
+              <h4 className="font-semibold text-white mb-3">Relevant Coursework:</h4>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {education.courses.map((course) => (
-                  <Badge key={course} variant="secondary" className="text-xs justify-center">
+                  <Badge key={course} variant="secondary" className="text-xs justify-center text-white border-white/30">
                     {course}
                   </Badge>
                 ))}

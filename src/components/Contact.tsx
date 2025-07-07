@@ -35,32 +35,32 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4">
+    <section id="contact" className="py-20 px-4 animate-scroll-fade">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Get In Touch
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to discuss your next backend project or explore collaboration opportunities
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            Ready to discuss your next backend projects or explore collaboration opportunities
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto">
           {/* Contact Info */}
-          <Card className="bg-card border-border mb-8">
+          <Card className="bg-card border-border mb-8 card-hover">
             <CardHeader>
-              <CardTitle className="text-xl text-primary">Contact Information</CardTitle>
+              <CardTitle className="text-xl text-white">Contact Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {contactInfo.map((contact) => (
-                <div key={contact.type} className="flex items-center justify-between p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
+                <div key={contact.type} className="flex items-center justify-between p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors glow-effect">
                   <div>
-                    <div className="font-medium text-foreground">{contact.type}</div>
-                    <div className="text-sm text-muted-foreground">{contact.value}</div>
+                    <div className="font-medium text-white">{contact.type}</div>
+                    <div className="text-sm text-white/70">{contact.value}</div>
                   </div>
                   {contact.action && (
-                    <Button variant="ghost" size="sm" asChild>
+                    <Button variant="ghost" size="sm" asChild className="text-white hover:text-accent">
                       <a href={contact.action} target="_blank" rel="noopener noreferrer">
                         <ArrowRight className="h-4 w-4" />
                       </a>
@@ -71,25 +71,18 @@ const Contact = () => {
             </CardContent>
           </Card>
 
-          {/* Availability Status */}
-          <Card className="bg-card border-border">
-            <CardHeader>
-              <CardTitle className="text-xl text-primary">Current Availability</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {availability.map((item) => (
-                <div key={item.status} className="flex items-center justify-between">
-                  <span className="text-sm text-foreground">{item.status}</span>
-                  <Badge 
-                    variant={item.available ? "default" : "secondary"}
-                    className={item.available ? "bg-primary/20 text-primary border-primary/30" : ""}
-                  >
-                    {item.available ? "Available" : "Busy"}
-                  </Badge>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+          {/* Get In Touch Button */}
+          <div className="text-center mt-8">
+            <Button 
+              size="lg" 
+              className="glow-effect"
+              asChild
+            >
+              <a href="mailto:omdadhe07@gmail.com">
+                Get In Touch
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

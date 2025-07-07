@@ -155,39 +155,42 @@ git push origin feature/new-endpoint`
   ];
 
   return (
-    <section id="skills" className="py-20 px-4">
+    <section id="skills" className="py-20 px-4 animate-scroll-fade">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Technical Expertise
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Specialized in building scalable backend systems with modern technologies and best practices
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {skillCategories.map((category) => (
-            <Card key={category.title} className="bg-card border-border">
+            <Card key={category.title} className="bg-card border-border card-hover">
               <CardHeader>
-                <CardTitle className="text-xl text-primary">{category.title}</CardTitle>
+                <CardTitle className="text-xl text-white">{category.title}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   {category.skills.map((skill) => (
                     <div key={skill} className="space-y-2">
                       <div 
-                        className="p-3 bg-muted rounded-md cursor-pointer transition-colors hover:bg-muted/80"
+                        className="p-3 bg-muted rounded-md cursor-pointer transition-colors hover:bg-muted/80 glow-effect"
                         onMouseEnter={() => setHoveredSkill(skill)}
                         onMouseLeave={() => setHoveredSkill(null)}
                       >
-                        <span className="font-medium text-foreground">{skill}</span>
+                        <span className="font-medium text-white">{skill}</span>
                       </div>
                       
                       {hoveredSkill === skill && codeSnippets[skill as keyof typeof codeSnippets] && (
-                        <div className="bg-code-bg border border-code-border rounded-md overflow-hidden">
-                          <div className="bg-muted/20 px-3 py-1 text-xs text-muted-foreground border-b border-code-border">
-                            {skill} - Code Example
+                        <div className="bg-code-bg border border-code-border rounded-lg overflow-hidden">
+                          <div className="flex items-center gap-2 bg-muted/20 px-3 py-2 text-xs text-white/60 border-b border-code-border">
+                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span className="flex-1 text-center">VSCode - {skill}</span>
                           </div>
                           <div className="p-3">
                             <pre className="text-xs text-accent font-mono whitespace-pre-wrap overflow-x-auto">
@@ -206,24 +209,24 @@ git push origin feature/new-endpoint`
 
         {/* Key Achievements */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card className="text-center bg-card border-border">
+          <Card className="text-center bg-card border-border card-hover">
             <CardContent className="pt-6">
-              <h3 className="font-semibold text-primary mb-2">Architecture Design</h3>
-              <p className="text-sm text-muted-foreground">Event-driven microservices with 99.9% uptime</p>
+              <h3 className="font-semibold text-white mb-2">Architecture Design</h3>
+              <p className="text-sm text-white/70">Event-driven microservices with 99.9% uptime</p>
             </CardContent>
           </Card>
           
-          <Card className="text-center bg-card border-border">
+          <Card className="text-center bg-card border-border card-hover">
             <CardContent className="pt-6">
-              <h3 className="font-semibold text-primary mb-2">Performance Optimization</h3>
-              <p className="text-sm text-muted-foreground">45% response time improvement with caching</p>
+              <h3 className="font-semibold text-white mb-2">Performance Optimization</h3>
+              <p className="text-sm text-white/70">45% response time improvement with caching</p>
             </CardContent>
           </Card>
           
-          <Card className="text-center bg-card border-border">
+          <Card className="text-center bg-card border-border card-hover">
             <CardContent className="pt-6">
-              <h3 className="font-semibold text-primary mb-2">AI Integration</h3>
-              <p className="text-sm text-muted-foreground">Real-time code review with ML-powered suggestions</p>
+              <h3 className="font-semibold text-white mb-2">AI Integration</h3>
+              <p className="text-sm text-white/70">Real-time code review with ML-powered suggestions</p>
             </CardContent>
           </Card>
         </div>

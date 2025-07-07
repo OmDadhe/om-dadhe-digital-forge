@@ -59,26 +59,26 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 bg-gradient-hero">
+    <section id="projects" className="py-20 px-4 animate-scroll-fade">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Featured Projects
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Showcasing scalable backend solutions with real-world impact and technical excellence
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={project.title} className="bg-card border-border">
+            <Card key={project.title} className="bg-card border-border card-hover">
               <CardHeader className="space-y-4">
                 <div>
-                  <CardTitle className="text-xl mb-2 text-primary">
+                  <CardTitle className="text-xl mb-2 text-white">
                     {project.title}
                   </CardTitle>
-                  <CardDescription className="text-muted-foreground leading-relaxed">
+                  <CardDescription className="text-white/70 leading-relaxed">
                     {project.description}
                   </CardDescription>
                 </div>
@@ -88,7 +88,7 @@ const Projects = () => {
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary" className="text-xs">
+                    <Badge key={tag} variant="secondary" className="text-xs text-white border-white/30">
                       {tag}
                     </Badge>
                   ))}
@@ -96,10 +96,10 @@ const Projects = () => {
 
                 {/* Key Achievements */}
                 <div className="space-y-2">
-                  <h4 className="font-semibold text-primary text-sm">Key Achievements:</h4>
+                  <h4 className="font-semibold text-white text-sm">Key Achievements:</h4>
                   <ul className="space-y-1">
                     {project.achievements.map((achievement, i) => (
-                      <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                      <li key={i} className="text-sm text-white/70 flex items-start gap-2">
                         <span className="text-accent mt-1">•</span>
                         <span>{achievement}</span>
                       </li>
@@ -111,8 +111,8 @@ const Projects = () => {
                 <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
                   {Object.entries(project.metrics).map(([key, value]) => (
                     <div key={key} className="text-center">
-                      <div className="font-bold text-primary">{value}</div>
-                      <div className="text-xs text-muted-foreground capitalize">{key}</div>
+                      <div className="font-bold text-white">{value}</div>
+                      <div className="text-xs text-white/60 capitalize">{key}</div>
                     </div>
                   ))}
                 </div>
@@ -123,15 +123,16 @@ const Projects = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16">
-          <Card className="bg-gradient-card border-primary/20 shadow-premium p-8 max-w-2xl mx-auto">
+          <Card className="bg-card border-border card-hover p-8 max-w-2xl mx-auto">
             <CardContent className="text-center space-y-4">
-              <h3 className="text-2xl font-bold text-primary">Ready to Build Something Amazing?</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-2xl font-bold text-white">Ready to Build Something Amazing?</h3>
+              <p className="text-white/70">
                 Let's discuss how my backend expertise can help scale your next project
               </p>
-              <Button size="lg" className="w-full">
-                Start a Conversation
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <Button size="lg" className="w-full glow-effect" asChild>
+                <a href="mailto:omdadhe07@gmail.com">
+                  Get In Touch
+                </a>
               </Button>
             </CardContent>
           </Card>

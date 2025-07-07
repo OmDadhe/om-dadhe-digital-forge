@@ -18,9 +18,9 @@
     --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
 
-    /* Primary Green Accent */
-    --primary: 142 76% 36%;
-    --primary-foreground: 0 0% 98%;
+    /* Primary White */
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 3%;
 
     /* Secondary Gray */
     --secondary: 0 0% 15%;
@@ -30,9 +30,9 @@
     --muted: 0 0% 10%;
     --muted-foreground: 0 0% 63%;
 
-    /* Accent Yellow for Code */
-    --accent: 60 100% 50%;
-    --accent-foreground: 0 0% 10%;
+    /* Accent Green for Hover */
+    --accent: 142 76% 36%;
+    --accent-foreground: 0 0% 98%;
 
     /* Destructive Red */
     --destructive: 0 62% 50%;
@@ -85,5 +85,36 @@
   /* Grid background pattern */
   .bg-grid-white\/\[0\.02\] {
     background-image: radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
+
+  /* Professional glow animations */
+  .animate-scroll-fade {
+    animation: scroll-fade 0.6s ease-out;
+  }
+
+  .glow-effect:hover {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(72, 187, 120, 0.3), 0 0 40px rgba(72, 187, 120, 0.1);
+  }
+
+  .name-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px rgba(72, 187, 120, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  @keyframes scroll-fade {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
