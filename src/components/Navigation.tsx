@@ -7,9 +7,9 @@ const Navigation = () => {
 
   const navItems = [
     { id: "home", label: "Home" },
-    { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
     { id: "experience", label: "Experience" },
+            { id: "skills", label: "Skills" },
+            { id: "projects", label: "Projects" },
     { id: "contact", label: "Contact" }
   ];
 
@@ -82,11 +82,10 @@ const Navigation = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button 
-              variant="premium" 
               size="sm"
               onClick={() => scrollToSection("contact")}
             >
-              Hire Me
+              Get In Touch
             </Button>
           </div>
 
@@ -117,12 +116,11 @@ const Navigation = () => {
               </Button>
             ))}
             <Button 
-              variant="premium" 
               size="sm"
               onClick={() => scrollToSection("contact")}
               className="mt-2"
             >
-              Hire Me
+              Get In Touch
             </Button>
           </div>
         </div>

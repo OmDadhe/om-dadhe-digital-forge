@@ -72,11 +72,10 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card key={project.title} className="bg-gradient-card border-primary/20 shadow-premium hover:shadow-glow-primary transition-all duration-500 group overflow-hidden">
+            <Card key={project.title} className="bg-card border-border">
               <CardHeader className="space-y-4">
-                <div className="text-6xl text-center">{project.image}</div>
                 <div>
-                  <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
+                  <CardTitle className="text-xl mb-2 text-primary">
                     {project.title}
                   </CardTitle>
                   <CardDescription className="text-muted-foreground leading-relaxed">
@@ -109,7 +108,7 @@ const Projects = () => {
                 </div>
 
                 {/* Metrics */}
-                <div className="grid grid-cols-3 gap-4 pt-4 border-t border-primary/20">
+                <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
                   {Object.entries(project.metrics).map(([key, value]) => (
                     <div key={key} className="text-center">
                       <div className="font-bold text-primary">{value}</div>
@@ -117,11 +116,6 @@ const Projects = () => {
                     </div>
                   ))}
                 </div>
-
-                <Button variant="outline" className="w-full group-hover:bg-primary/10 group-hover:border-primary/40 transition-all">
-                  View Details
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Button>
               </CardContent>
             </Card>
           ))}
@@ -135,7 +129,7 @@ const Projects = () => {
               <p className="text-muted-foreground">
                 Let's discuss how my backend expertise can help scale your next project
               </p>
-              <Button variant="premium" size="lg" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button size="lg" className="w-full">
                 Start a Conversation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>

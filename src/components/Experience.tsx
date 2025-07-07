@@ -6,7 +6,7 @@ const Experience = () => {
     {
       role: "Backend Developer Intern",
       company: "LoomyLabs",
-      period: "2024",
+      period: "2025",
       type: "Internship",
       description: "Architected and developed scalable backend infrastructure for an AI-powered application serving 10,000+ users",
       technologies: ["Node.js", "Express.js", "FastAPI", "Supabase", "Redis", "Kafka", "Microservices", "Docker"],
@@ -15,7 +15,8 @@ const Experience = () => {
         "Integrated Supabase for real-time database operations and authentication, reducing development time by 50%",
         "Implemented Redis caching layer and Kafka message queuing system, improving response time by 45%",
         "Designed event-driven architecture ensuring 99.9% uptime and seamless scalability",
-        "Collaborated with ML engineers to integrate AI models through optimized API endpoints"
+        "Collaborated with ML engineers to integrate AI models through optimized API endpoints",
+        "Created a code review system with real-time adjustment suggestions and code fix"
       ],
       impact: {
         users: "10,000+",
@@ -27,7 +28,7 @@ const Experience = () => {
     {
       role: "Software Engineer Intern",
       company: "Eduaccess Information Services Private Limited",
-      period: "2024",
+      period: "2025",
       type: "Internship",
       description: "Developed and optimized an ATS system, improving candidate screening efficiency by 40%",
       technologies: ["Java", "JDBC", "MySQL", "JavaFX", "Git", "Agile", "RESTful APIs", "JUnit"],
@@ -65,7 +66,7 @@ const Experience = () => {
     <section id="experience" className="py-20 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             Professional Journey
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -76,7 +77,7 @@ const Experience = () => {
         {/* Experience Timeline */}
         <div className="space-y-8 mb-16">
           {experiences.map((exp, index) => (
-            <Card key={exp.company} className="bg-gradient-card border-primary/20 shadow-card hover:shadow-glow-subtle transition-all duration-300">
+            <Card key={exp.company} className="bg-card border-border">
               <CardHeader>
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div>
@@ -120,7 +121,7 @@ const Experience = () => {
                 </div>
 
                 {/* Impact Metrics */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-primary/20">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
                   {Object.entries(exp.impact).map(([key, value]) => (
                     <div key={key} className="text-center">
                       <div className="font-bold text-primary text-lg">{value}</div>
@@ -134,11 +135,11 @@ const Experience = () => {
         </div>
 
         {/* Education */}
-        <Card className="bg-gradient-card border-secondary/20 shadow-card hover:shadow-glow-secondary transition-all duration-300">
+        <Card className="bg-card border-border">
           <CardHeader>
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <CardTitle className="text-xl text-secondary">Education</CardTitle>
+                <CardTitle className="text-xl text-primary">Education</CardTitle>
                 <CardDescription className="text-lg font-medium text-foreground">
                   {education.degree}
                 </CardDescription>
@@ -152,7 +153,7 @@ const Experience = () => {
           
           <CardContent>
             <div>
-              <h4 className="font-semibold text-secondary mb-3">Relevant Coursework:</h4>
+              <h4 className="font-semibold text-primary mb-3">Relevant Coursework:</h4>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {education.courses.map((course) => (
                   <Badge key={course} variant="secondary" className="text-xs justify-center">

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, ArrowRight } from "lucide-react";
-import heroImage from "@/assets/hero-bg.jpg";
 
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
@@ -11,35 +10,18 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
-      
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-background/60 backdrop-blur-[2px]" />
-      
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-hero" />
-      
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-20 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-float" />
-      <div className="absolute bottom-20 right-20 w-40 h-40 bg-secondary/10 rounded-full blur-xl animate-float" style={{ animationDelay: '1s' }} />
-      <div className="absolute top-1/2 left-10 w-24 h-24 bg-accent/10 rounded-full blur-xl animate-float" style={{ animationDelay: '2s' }} />
-
+    <section className="relative min-h-screen flex items-center justify-center">
       <div className="container px-4 mx-auto text-center relative z-10">
-        <div className="max-w-4xl mx-auto space-y-8 animate-slide-up">
+        <div className="max-w-4xl mx-auto space-y-8">
           {/* Professional Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 backdrop-blur-sm border border-primary/20 shadow-card">
-            <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-card border border-border">
+            <div className="w-2 h-2 bg-primary rounded-full"></div>
             <span className="text-sm text-muted-foreground">Available for Full-time Opportunities</span>
           </div>
 
           {/* Main Headline */}
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-foreground via-primary to-secondary bg-clip-text text-transparent leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
               Om Dadhe
             </h1>
             <h2 className="text-2xl md:text-3xl text-primary font-semibold">
@@ -48,7 +30,7 @@ const Hero = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               B.Tech Computer Science Engineer crafting scalable backend solutions with 
               <span className="text-accent font-medium"> microservices architecture</span>, 
-              <span className="text-secondary font-medium"> AI integration</span>, and 
+              <span className="text-primary font-medium"> AI integration</span>, and 
               <span className="text-primary font-medium"> real-time systems</span>
             </p>
           </div>
@@ -60,7 +42,7 @@ const Hero = () => {
               <div className="text-sm text-muted-foreground">Users Served</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-secondary">99.9%</div>
+              <div className="text-3xl font-bold text-primary">99.9%</div>
               <div className="text-sm text-muted-foreground">Uptime Achieved</div>
             </div>
             <div className="text-center">
@@ -72,17 +54,16 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
-              variant="premium" 
-              size="xl" 
+              size="lg" 
               onClick={() => scrollToSection('projects')}
               className="group"
             >
               View My Work
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
             <Button 
-              variant="hero" 
-              size="xl" 
+              variant="outline" 
+              size="lg" 
               onClick={() => scrollToSection('contact')}
             >
               Get In Touch
@@ -90,7 +71,7 @@ const Hero = () => {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2">
             <ArrowDown className="h-6 w-6 text-muted-foreground" />
           </div>
         </div>
