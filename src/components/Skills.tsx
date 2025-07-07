@@ -7,157 +7,132 @@ const Skills = () => {
   const codeSnippets = {
     "Node.js": `const express = require('express');
 const app = express();
-
 app.use(express.json());
-
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK' });
 });
-
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
-});`,
+app.listen(3000);`,
+    "Express.js": `const router = express.Router();
+router.post('/users', async (req, res) => {
+  const user = await User.create(req.body);
+  res.status(201).json(user);
+});
+module.exports = router;`,
+    "FastAPI": `from fastapi import FastAPI
+app = FastAPI()
+@app.get("/users/{user_id}")
+async def get_user(user_id: int):
+    return {"user_id": user_id}`,
     "Spring Boot": `@RestController
 @RequestMapping("/api/users")
 public class UserController {
-    
-    @Autowired
-    private UserService userService;
-    
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUser(@PathVariable Long id) {
-        User user = userService.findById(id);
-        return ResponseEntity.ok(user);
+    public User getUser(@PathVariable Long id) {
+        return userService.findById(id);
     }
 }`,
     "Microservices": `version: '3'
 services:
   api-gateway:
     image: nginx:alpine
-    ports:
-      - "80:80"
-  
   user-service:
     build: ./user-service
-    environment:
-      - DB_HOST=postgres
-  
   order-service:
-    build: ./order-service
-    depends_on:
-      - rabbitmq`,
-    "Java": `public class BinarySearchTree {
-    private Node root;
-    
-    public void insert(int value) {
-        root = insertRec(root, value);
-    }
-    
-    private Node insertRec(Node root, int value) {
-        if (root == null) {
-            root = new Node(value);
-            return root;
-        }
-        if (value < root.value)
-            root.left = insertRec(root.left, value);
-        else if (value > root.value)
-            root.right = insertRec(root.right, value);
-        return root;
-    }
-}`,
+    build: ./order-service`,
     "JavaScript/TypeScript": `interface User {
   id: string;
   name: string;
-  email: string;
 }
-
 const fetchUsers = async (): Promise<User[]> => {
-  try {
-    const response = await fetch('/api/users');
-    const users: User[] = await response.json();
-    return users;
-  } catch (error) {
-    console.error('Error fetching users:', error);
-    return [];
-  }
+  const response = await fetch('/api/users');
+  return response.json();
 };`,
-    "Python": `from typing import List, Optional
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-def inorder_traversal(root: Optional[TreeNode]) -> List[int]:
-    result = []
+    "Java": `public class UserService {
+    private UserRepository repository;
     
-    def dfs(node):
-        if node:
-            dfs(node.left)
-            result.append(node.val)
-            dfs(node.right)
+    public User findById(Long id) {
+        return repository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException());
+    }
+}`,
+    "Python": `class UserManager:
+    def __init__(self, db):
+        self.db = db
     
-    dfs(root)
-    return result`,
+    def create_user(self, data):
+        user = User(**data)
+        self.db.save(user)
+        return user`,
+    "C": `#include <stdio.h>
+int main() {
+    printf("Hello World");
+    return 0;
+}`,
+    "SQL": `SELECT u.id, u.name, COUNT(o.id) as orders
+FROM users u
+LEFT JOIN orders o ON u.id = o.user_id
+GROUP BY u.id, u.name
+ORDER BY orders DESC;`,
+    "Supabase": `import { createClient } from '@supabase/supabase-js'
+const supabase = createClient(url, key)
+const { data, error } = await supabase
+  .from('users')
+  .select('*')
+  .eq('active', true)`,
+    "MongoDB": `const user = await User.findOneAndUpdate(
+  { email: 'user@example.com' },
+  { $set: { lastLogin: new Date() } },
+  { new: true }
+);`,
+    "MySQL": `SELECT u.*, p.title as latest_post
+FROM users u
+LEFT JOIN posts p ON u.id = p.user_id
+WHERE u.active = 1
+ORDER BY p.created_at DESC;`,
     "Redis": `import redis
-from typing import Optional
-
-class CacheService:
-    def __init__(self):
-        self.client = redis.Redis(host='localhost', port=6379, db=0)
-    
-    def get(self, key: str) -> Optional[str]:
-        value = self.client.get(key)
-        return value.decode('utf-8') if value else None
-    
-    def set(self, key: str, value: str, expiry: int = 3600):
-        self.client.setex(key, expiry, value)
-    
-    def delete(self, key: str) -> bool:
-        return bool(self.client.delete(key))`,
-    "MongoDB": `const mongoose = require('mongoose');
-
-const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, unique: true },
-  createdAt: { type: Date, default: Date.now }
-});
-
-const User = mongoose.model('User', userSchema);
-
-async function createUser(userData) {
-  const user = new User(userData);
-  return await user.save();
+client = redis.Redis()
+client.setex('user:123', 3600, json.dumps(user_data))
+cached_user = client.get('user:123')`,
+    "Apache Kafka": `@KafkaListener(topics = "user-events")
+public void handleUserEvent(UserEvent event) {
+    logger.info("Processing: {}", event);
+    userService.processEvent(event);
 }`,
     "Docker": `FROM node:18-alpine
-
 WORKDIR /app
-
 COPY package*.json ./
 RUN npm ci --only=production
-
 COPY . .
-
 EXPOSE 3000
-
-USER node
-
 CMD ["npm", "start"]`,
     "AWS": `import boto3
-from botocore.exceptions import ClientError
-
-def upload_to_s3(file_name, bucket, object_name=None):
-    if object_name is None:
-        object_name = file_name
-    
-    s3_client = boto3.client('s3')
-    try:
-        s3_client.upload_file(file_name, bucket, object_name)
-        return True
-    except ClientError as e:
-        print(f"Error: {e}")
-        return False`
+s3 = boto3.client('s3')
+s3.upload_file(
+    'local_file.txt',
+    'my-bucket',
+    'remote_file.txt'
+)`,
+    "Kubernetes": `apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-server`,
+    "CI/CD": `name: Deploy
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install && npm test`,
+    "Git/GitHub": `git checkout -b feature/new-endpoint
+git add .
+git commit -m "Add user API endpoint"
+git push origin feature/new-endpoint`
   };
 
   const skillCategories = [
@@ -198,26 +173,32 @@ def upload_to_s3(file_name, bucket, object_name=None):
                 <CardTitle className="text-xl text-primary">{category.title}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {category.skills.map((skill) => (
-                  <div 
-                    key={skill} 
-                    className="relative group"
-                    onMouseEnter={() => setHoveredSkill(skill)}
-                    onMouseLeave={() => setHoveredSkill(null)}
-                  >
-                    <div className="p-3 bg-muted rounded-md cursor-pointer transition-colors hover:bg-muted/80">
-                      <span className="font-medium text-foreground">{skill}</span>
-                    </div>
-                    
-                    {hoveredSkill === skill && codeSnippets[skill as keyof typeof codeSnippets] && (
-                      <div className="absolute top-0 left-0 w-full z-10 bg-code-bg border border-code-border rounded-md p-4 shadow-lg">
-                        <pre className="text-xs text-accent font-mono whitespace-pre-wrap overflow-hidden">
-                          {codeSnippets[skill as keyof typeof codeSnippets]}
-                        </pre>
+                <div className="space-y-2">
+                  {category.skills.map((skill) => (
+                    <div key={skill} className="space-y-2">
+                      <div 
+                        className="p-3 bg-muted rounded-md cursor-pointer transition-colors hover:bg-muted/80"
+                        onMouseEnter={() => setHoveredSkill(skill)}
+                        onMouseLeave={() => setHoveredSkill(null)}
+                      >
+                        <span className="font-medium text-foreground">{skill}</span>
                       </div>
-                    )}
-                  </div>
-                ))}
+                      
+                      {hoveredSkill === skill && codeSnippets[skill as keyof typeof codeSnippets] && (
+                        <div className="bg-code-bg border border-code-border rounded-md overflow-hidden">
+                          <div className="bg-muted/20 px-3 py-1 text-xs text-muted-foreground border-b border-code-border">
+                            {skill} - Code Example
+                          </div>
+                          <div className="p-3">
+                            <pre className="text-xs text-accent font-mono whitespace-pre-wrap overflow-x-auto">
+                              {codeSnippets[skill as keyof typeof codeSnippets]}
+                            </pre>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           ))}

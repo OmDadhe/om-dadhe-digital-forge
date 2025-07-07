@@ -21,8 +21,10 @@ const Hero = () => {
 
           {/* Main Headline */}
           <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground leading-tight">
-              Om Dadhe
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              <span className="bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent animate-pulse">
+                Om Dadhe
+              </span>
             </h1>
             <h2 className="text-2xl md:text-3xl text-primary font-semibold">
               Backend Engineering Specialist

@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { id: "home", label: "Home" },
     { id: "experience", label: "Experience" },
-            { id: "skills", label: "Skills" },
-            { id: "projects", label: "Projects" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
     { id: "contact", label: "Contact" }
   ];
 
@@ -47,7 +49,7 @@ const Navigation = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-background/80 backdrop-blur-md border-b border-primary/20 shadow-card' 
+        ? 'bg-background/80 backdrop-blur-md border-b border-border' 
         : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4">
@@ -55,7 +57,7 @@ const Navigation = () => {
           {/* Logo */}
           <button 
             onClick={() => scrollToSection("home")}
-            className="font-bold text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent hover:scale-105 transition-transform"
+            className="font-bold text-xl text-primary hover:text-primary/80 transition-colors"
           >
             Om Dadhe
           </button>
@@ -91,39 +93,47 @@ const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="sm">
-              <div className="w-5 h-5 flex flex-col justify-center space-y-1">
-                <div className="w-full h-0.5 bg-current"></div>
-                <div className="w-full h-0.5 bg-current"></div>
-                <div className="w-full h-0.5 bg-current"></div>
-              </div>
+            <Button 
+              variant="ghost" 
+              size="sm"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden py-4 border-t border-primary/20">
-          <div className="flex flex-col space-y-2">
-            {navItems.map((item) => (
-              <Button
-                key={item.id}
-                variant={activeSection === item.id ? "default" : "ghost"}
+        {isMobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-border bg-background">
+            <div className="flex flex-col space-y-2">
+              {navItems.map((item) => (
+                <Button
+                  key={item.id}
+                  variant={activeSection === item.id ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="justify-start"
+                >
+                  {item.label}
+                </Button>
+              ))}
+              <Button 
                 size="sm"
-                onClick={() => scrollToSection(item.id)}
-                className="justify-start"
+                onClick={() => {
+                  scrollToSection("contact");
+                  setIsMobileMenuOpen(false);
+                }}
+                className="mt-2"
               >
-                {item.label}
+                Get In Touch
               </Button>
-            ))}
-            <Button 
-              size="sm"
-              onClick={() => scrollToSection("contact")}
-              className="mt-2"
-            >
-              Get In Touch
-            </Button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );
