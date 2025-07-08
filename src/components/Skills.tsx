@@ -175,7 +175,7 @@ git push origin feature/new-endpoint`
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   {category.skills.map((skill) => (
-                    <div key={skill} className="space-y-2">
+                    <div key={skill} className="space-y-2 relative">
                       <div 
                         className="p-3 bg-muted rounded-md cursor-pointer transition-colors hover:bg-muted/80 glow-effect"
                         onMouseEnter={() => setHoveredSkill(skill)}
@@ -185,7 +185,7 @@ git push origin feature/new-endpoint`
                       </div>
                       
                       {hoveredSkill === skill && codeSnippets[skill as keyof typeof codeSnippets] && (
-                        <div className="bg-code-bg border border-code-border rounded-lg overflow-hidden">
+                        <div className="absolute z-10 left-0 right-0 top-full mt-2 bg-code-bg border border-code-border rounded-lg overflow-hidden shadow-lg">
                           <div className="flex items-center gap-2 bg-muted/20 px-3 py-2 text-xs text-white/60 border-b border-code-border">
                             <div className="w-3 h-3 rounded-full bg-red-500"></div>
                             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
