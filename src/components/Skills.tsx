@@ -1,8 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Skills = () => {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   const codeSnippets = {
     "Node.js": `const express = require('express');
@@ -154,6 +155,31 @@ git push origin feature/new-endpoint`
     }
   ];
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const handleSkillInteraction = (skill: string) => {
+    if (isMobile) {
+      setHoveredSkill(hoveredSkill === skill ? null : skill);
+    } else {
+      setHoveredSkill(skill);
+    }
+  };
+
+  const handleSkillLeave = () => {
+    if (!isMobile) {
+      setHoveredSkill(null);
+    }
+  };
+
   return (
     <section id="skills" className="py-20 px-4 animate-scroll-fade">
       <div className="container mx-auto">
@@ -178,8 +204,9 @@ git push origin feature/new-endpoint`
                     <div key={skill} className="space-y-2 relative">
                       <div 
                         className="p-3 bg-muted rounded-md cursor-pointer transition-colors hover:bg-muted/80 glow-effect"
-                        onMouseEnter={() => setHoveredSkill(skill)}
-                        onMouseLeave={() => setHoveredSkill(null)}
+                        onMouseEnter={() => handleSkillInteraction(skill)}
+                        onMouseLeave={handleSkillLeave}
+                        onClick={() => handleSkillInteraction(skill)}
                       >
                         <span className="font-medium text-white text-sm sm:text-base break-words">{skill}</span>
                       </div>
