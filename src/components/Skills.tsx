@@ -157,10 +157,10 @@ git push origin feature/new-endpoint`
   return (
     <section id="skills" className="py-20 px-4 animate-scroll-fade">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Technical Expertise
-          </h2>
+          <div className="text-center mb-16">
+            <h2 className="text-responsive-3xl md:text-5xl font-bold mb-4 text-white">
+              Technical Expertise
+            </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
             Specialized in building scalable backend systems with modern technologies and best practices
           </p>

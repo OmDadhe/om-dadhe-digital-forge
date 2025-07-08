@@ -4,18 +4,22 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
+import FloatingElements from "@/components/FloatingElements";
+import TechStack from "@/components/TechStack";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <FloatingElements />
       <Navigation />
       
-      <main>
+      <main className="relative z-10">
         <section id="home">
           <Hero />
         </section>
         
         <Experience />
+        <TechStack />
         <Skills />
         <Projects />
         <Contact />

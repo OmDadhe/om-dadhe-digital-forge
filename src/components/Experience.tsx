@@ -49,9 +49,8 @@ const Experience = () => {
 
   const education = {
     degree: "Bachelor of Technology in Computer Science Engineering",
-    institution: "University Name",
+    institution: "Gandhi Institute of Technology and Management",
     period: "2021-2025",
-    gpa: "8.5/10",
     courses: [
       "Data Structures & Algorithms",
       "Database Management Systems",
@@ -70,7 +69,7 @@ const Experience = () => {
             Professional Journey
           </h2>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">
-            Building scalable solutions and gaining expertise in modern backend technologies
+            Building scalable solutions and gaining expertise in modern full-stack technologies
           </p>
         </div>
 
@@ -143,10 +142,12 @@ const Experience = () => {
                 <CardDescription className="text-lg font-medium text-white/80">
                   {education.degree}
                 </CardDescription>
+                <CardDescription className="text-base text-white/60 mt-1">
+                  {education.institution}
+                </CardDescription>
               </div>
               <div className="flex flex-col items-start md:items-end gap-2">
                 <Badge variant="secondary" className="text-white border-white/30">{education.period}</Badge>
-                <Badge variant="outline" className="text-white border-white/30">GPA: {education.gpa}</Badge>
               </div>
             </div>
           </CardHeader>
